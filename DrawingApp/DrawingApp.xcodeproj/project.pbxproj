@@ -11,6 +11,8 @@
 		EA8CE0E02B3742BD00BDEA2A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8CE0DF2B3742BD00BDEA2A /* ContentView.swift */; };
 		EA8CE0E22B3742BE00BDEA2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA8CE0E12B3742BE00BDEA2A /* Assets.xcassets */; };
 		EA8CE0E52B3742BE00BDEA2A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA8CE0E42B3742BE00BDEA2A /* Preview Assets.xcassets */; };
+		EA8CE0EC2B37450A00BDEA2A /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8CE0EB2B37450A00BDEA2A /* Line.swift */; };
+		EA8CE0EE2B375C6000BDEA2A /* DrawingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8CE0ED2B375C6000BDEA2A /* DrawingEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		EA8CE0DF2B3742BD00BDEA2A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EA8CE0E12B3742BE00BDEA2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA8CE0E42B3742BE00BDEA2A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EA8CE0EB2B37450A00BDEA2A /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		EA8CE0ED2B375C6000BDEA2A /* DrawingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingEngine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 				EA8CE0DF2B3742BD00BDEA2A /* ContentView.swift */,
 				EA8CE0E12B3742BE00BDEA2A /* Assets.xcassets */,
 				EA8CE0E32B3742BE00BDEA2A /* Preview Content */,
+				EA8CE0EB2B37450A00BDEA2A /* Line.swift */,
+				EA8CE0ED2B375C6000BDEA2A /* DrawingEngine.swift */,
 			);
 			path = DrawingApp;
 			sourceTree = "<group>";
@@ -137,6 +143,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA8CE0EE2B375C6000BDEA2A /* DrawingEngine.swift in Sources */,
+				EA8CE0EC2B37450A00BDEA2A /* Line.swift in Sources */,
 				EA8CE0E02B3742BD00BDEA2A /* ContentView.swift in Sources */,
 				EA8CE0DE2B3742BD00BDEA2A /* DrawingAppApp.swift in Sources */,
 			);
