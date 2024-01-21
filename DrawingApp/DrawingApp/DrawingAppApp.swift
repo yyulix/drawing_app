@@ -1,5 +1,5 @@
 //
-//  DrawingAppApp.swift
+//  DrawingApp.swift
 //  DrawingApp
 //
 //  Created by Julia Popova on 23.12.2023.
@@ -11,7 +11,7 @@ import SwiftUI
 struct DrawingAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DrawingView()
         }
     }
 }

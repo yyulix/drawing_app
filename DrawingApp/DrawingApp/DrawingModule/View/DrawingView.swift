@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  DrawingView.swift
 //  DrawingApp
 //
 //  Created by Julia Popova on 23.12.2023.
@@ -7,11 +7,13 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct DrawingView: View {
+    @Environment(\.scenePhase) var scenePhase
+    
     @State private var color: Color = .black
     @State private var lineWidth: CGFloat = 3.0
-    @State private var lines: [Line] = []
-    @State private var removedLines: [Line] = []
+    
+    @StateObject var viewModel = DrawingViewModel()
     
     let engine = DrawingEngine()
     
@@ -25,23 +27,21 @@ struct ContentView: View {
                 Slider(value: $lineWidth, in: 1...10)
                 
                 Button {
-                    let line = lines.removeLast()
-                    removedLines.append(line)
+                    viewModel.removeLastLine()
                 } label: {
                     Image(systemName: "arrow.uturn.backward.circle")
                         .imageScale(.large)
-                }.disabled(lines.isEmpty)
+                }.disabled(viewModel.lines.isEmpty)
                 
                 Button {
-                    let line = removedLines.removeLast()
-                    lines.append(line)
+                    viewModel.undoRemoveLastLine()
                 } label: {
                     Image(systemName: "arrow.uturn.forward.circle")
                         .imageScale(.large)
-                }.disabled(removedLines.isEmpty)
+                }.disabled(viewModel.removedLines.isEmpty)
                 
                 Button {
-                    lines = []
+                    viewModel.lines = []
                 } label: {
                     Text("Clear")
                 }
@@ -50,7 +50,7 @@ struct ContentView: View {
             .padding()
             
             Canvas { context, size in
-                for line in lines {
+                for line in viewModel.lines {
                     let path = engine.createPath(for: line.points)
                     context.stroke(
                         path,
@@ -69,7 +69,7 @@ struct ContentView: View {
                     let newPoint = value.location
                     
                     if value.translation.width + value.translation.height == 0 {
-                        lines.append(
+                        viewModel.lines.append(
                             .init(
                                 points: [newPoint],
                                 color: color,
@@ -77,15 +77,20 @@ struct ContentView: View {
                             )
                         )
                     } else {
-                        let index = lines.count - 1
-                        lines[index].points.append(newPoint)
+                        let index = viewModel.lines.count - 1
+                        viewModel.lines[index].points.append(newPoint)
                     }
                 })
             )
+        }
+        .onChange(of: scenePhase) { newValue in
+            if newValue == .background {
+                viewModel.save()
+            }
         }
     }
 }
 
 #Preview {
-    ContentView()
+    DrawingView()
 }
