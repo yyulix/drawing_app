@@ -26,7 +26,7 @@ class DrawingViewModel: ObservableObject {
         if FileManager.default.fileExists(atPath: url.path), let data = try? Data(contentsOf: url) {
             let decoder = JSONDecoder()
             do {
-                let lines = try decoder.decode([Line].self, from: data)
+                self.lines = try decoder.decode([Line].self, from: data)
             } catch {
                 print("decoding error \(error)")
             }
@@ -38,6 +38,7 @@ class DrawingViewModel: ObservableObject {
         
         do {
             let data = try? encoder.encode(lines)
+            try data?.write(to: self.url)
         } catch {
             print("error saving \(error)")
         }
